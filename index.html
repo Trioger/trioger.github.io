@@ -1,13 +1,235 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Personal Site</title>
-  <style>
-    body { font-family: Arial; text-align: center; margin: 50px; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SampleSizePro | Research Sample Size Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Welcome to My Website!</h1>
-  <p>This is hosted for free on GitHub Pages. 🚀</p>
+    <header>
+        <nav>
+            <div class="logo">SampleSizePro</div>
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">Calculators</a></li>
+                <li><a href="#">Resources</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>Free Sample Size Calculator for Research Studies</h1>
+                <p>Plan your research with confidence. Whether you're estimating proportions, comparing groups, or running regression analyses, our calculators help you compute the required sample size — fast, easy, and free.</p>
+                <button class="cta-button" id="startCalculating">Start Calculating</button>
+            </div>
+        </section>
+
+        <!-- Choose Your Study Type Section -->
+        <section class="study-types" id="studyTypes">
+            <div class="container">
+                <h2>Choose Your Study Type</h2>
+                <div class="calculator-groups">
+                    <!-- Descriptive Studies -->
+                    <div class="calculator-group">
+                        <div class="group-header" data-group="descriptive">
+                            <h3>Descriptive Studies</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="group-content" id="descriptiveContent">
+                            <a href="#" class="calculator-card" data-calculator="estimate-mean">
+                                <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                                <h4>Estimate a Mean</h4>
+                                <p>Determine sample size needed to estimate a population mean with desired precision.</p>
+                            </a>
+                            <a href="#" class="calculator-card" data-calculator="estimate-proportion">
+                                <div class="card-icon"><i class="fas fa-percentage"></i></div>
+                                <h4>Estimate a Proportion</h4>
+                                <p>Calculate sample size for estimating a population proportion or percentage.</p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Comparative Studies -->
+                    <div class="calculator-group">
+                        <div class="group-header" data-group="comparative">
+                            <h3>Comparative Studies</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="group-content" id="comparativeContent">
+                            <a href="#" class="calculator-card" data-calculator="two-means">
+                                <div class="card-icon"><i class="fas fa-columns"></i></div>
+                                <h4>Two Means (t-test, ANOVA)</h4>
+                                <p>Find sample size for comparing means between two groups.</p>
+                            </a>
+                            <a href="#" class="calculator-card" data-calculator="two-proportions">
+                                <div class="card-icon"><i class="fas fa-balance-scale"></i></div>
+                                <h4>Two Proportions (chi-square)</h4>
+                                <p>Determine sample size for comparing proportions between groups.</p>
+                            </a>
+                            <a href="#" class="calculator-card" data-calculator="case-control">
+                                <div class="card-icon"><i class="fas fa-exchange-alt"></i></div>
+                                <h4>Case-Control Study</h4>
+                                <p>Calculate sample size for case-control studies with specified odds ratio.</p>
+                            </a>
+                            <a href="#" class="calculator-card" data-calculator="cohort">
+                                <div class="card-icon"><i class="fas fa-users"></i></div>
+                                <h4>Cohort Study</h4>
+                                <p>Determine sample size for cohort studies with specified relative risk.</p>
+                            </a>
+                            <a href="#" class="calculator-card" data-calculator="rct">
+                                <div class="card-icon"><i class="fas fa-random"></i></div>
+                                <h4>Randomized Controlled Trial (RCT)</h4>
+                                <p>Calculate sample size needed for randomized controlled trials.</p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Correlational/Regression -->
+                    <div class="calculator-group">
+                        <div class="group-header" data-group="correlational">
+                            <h3>Correlational/Regression</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="group-content" id="correlationalContent">
+                            <a href="#" class="calculator-card" data-calculator="correlation">
+                                <div class="card-icon"><i class="fas fa-project-diagram"></i></div>
+                                <h4>Pearson/Spearman Correlation</h4>
+                                <p>Determine sample size for detecting specified correlation coefficient.</p>
+                            </a>
+                            <a href="#" class="calculator-card" data-calculator="simple-regression">
+                                <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                                <h4>Simple Linear Regression</h4>
+                                <p>Calculate sample size for simple linear regression analysis.</p>
+                            </a>
+                            <a href="#" class="calculator-card" data-calculator="multiple-regression">
+                                <div class="card-icon"><i class="fas fa-sitemap"></i></div>
+                                <h4>Multiple Linear Regression</h4>
+                                <p>Find sample size for multiple regression with specified R² and predictors.</p>
+                            </a>
+                            <a href="#" class="calculator-card" data-calculator="logistic-regression">
+                                <div class="card-icon"><i class="fas fa-bezier-curve"></i></div>
+                                <h4>Logistic Regression</h4>
+                                <p>Determine sample size for logistic regression analysis.</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="how-it-works">
+            <div class="container">
+                <h2>How It Works</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Select Study Type</h3>
+                        <p>Choose the type of study you're planning from our comprehensive list of calculators.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Enter Parameters</h3>
+                        <p>Provide necessary inputs like effect size, confidence level, and power based on your research goals.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Get Results</h3>
+                        <p>Receive the recommended minimum sample size for your study based on standard statistical formulas.</p>
+                    </div>
+                </div>
+                <p class="methodology">We use standard, peer-reviewed statistical formulas and best practices for health research.</p>
+            </div>
+        </section>
+
+        <!-- Resources Section -->
+        <section class="resources">
+            <div class="container">
+                <h2>Learn More</h2>
+                <div class="resource-cards">
+                    <div class="resource-card">
+                        <div class="resource-icon"><i class="fas fa-book"></i></div>
+                        <h3>Statistical Guides</h3>
+                        <p>Download our free PDF guides explaining sample size calculations for different research designs.</p>
+                        <a href="#" class="resource-link">Browse Guides</a>
+                    </div>
+                    <div class="resource-card">
+                        <div class="resource-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <h3>Tutorial Articles</h3>
+                        <p>Read our blog-style explanations that break down complex statistical concepts into understandable terms.</p>
+                        <a href="#" class="resource-link">Read Articles</a>
+                    </div>
+                    <div class="resource-card">
+                        <div class="resource-icon"><i class="fas fa-external-link-alt"></i></div>
+                        <h3>External Resources</h3>
+                        <p>Explore recommended external resources for advanced statistical learning and research planning.</p>
+                        <a href="#" class="resource-link">View Resources</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Disclaimer Section -->
+        <section class="disclaimer">
+            <div class="container">
+                <h2>Disclaimer</h2>
+                <p>This tool is intended for general guidance in research planning. Please consult a statistician or your research advisor for final decisions, especially for complex or high-stakes studies.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo">SampleSizePro</div>
+                    <p>Free statistical tools for researchers.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h3>Calculators</h3>
+                        <ul>
+                            <li><a href="#">Descriptive Studies</a></li>
+                            <li><a href="#">Comparative Studies</a></li>
+                            <li><a href="#">Correlational Studies</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="#">Guides</a></li>
+                            <li><a href="#">Tutorials</a></li>
+                            <li><a href="#">FAQs</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group">
+                        <h3>About</h3>
+                        <ul>
+                            <li><a href="#">Our Team</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SampleSizePro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
